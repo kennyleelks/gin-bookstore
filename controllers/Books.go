@@ -10,6 +10,7 @@ import (
 type AddBookInput struct {
 	Title  string      `json:"title" binding:"required"`
 	Author null.String `json:"author"`
+	ISBN   null.String `json:"isbn"`
 }
 
 func GetBooks(c *gin.Context) {
@@ -30,6 +31,7 @@ func CreateBook(c *gin.Context) {
 	book := models.Book{
 		Title:  input.Title,
 		Author: input.Author,
+		ISBN:   input.ISBN,
 	}
 
 	models.DB.Create(&book)
